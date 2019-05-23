@@ -1,0 +1,18 @@
+{
+  "schematics": {
+    "lint-rules": {
+      "description": "Add Strongbrew linting rules.",
+      "factory": "./lint-rules/index"
+    },
+    "ng-add": {
+      "factory": "./ng-add/index",
+      "description": "Add the strongbrew package",
+      "hidden": true
+    },
+    "ng-add-setup": {
+      "factory": "./ng-add-setup/index",
+      "description": "Convert an existing CLI project into an Nx Workspace with strongbrew rules",
+      "hidden": true
+    }
+  }
+}

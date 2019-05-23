@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "SchematicsStrongbrewSchematics",
+  "title": "Scaffolding library for Angular applications using Strongbrew libraries",
+  "type": "object",
+  "properties": {
+    "defaultCollection": {
+      "type": "boolean",
+      "default": true,
+      "description": "Use @strongbrew/schematics as the default collection",
+      "x-prompt": "Do you want to use @strongbrew/schematics as the default collection?",
+      "alias": "d"
+    }
+  },
+  "required": []
+}

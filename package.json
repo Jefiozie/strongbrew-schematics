@@ -1,0 +1,56 @@
+{
+  "name": "@strongbrew/schematics",
+  "version": "0.0.0",
+  "description": "A blank schematics",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "build:clean:launch": "yarn build && yarn clean:launch",
+    "build:schematics": "tsc -p tsconfig.schematics.json && cp src/collection.json dist",
+    "clean": "git checkout HEAD -- sandbox && git clean -f -d sandbox",
+    "clean:launch": "yarn clean && yarn launch",
+    "dev": "yarn build:clean:launch",
+    "launch": "cd sandbox && yarn && yarn ng g @strongbrew/schematics:strongbrew-boundaries",
+    "link:schematic": "yarn link && cd sandbox && yarn link @strongbrew/schematics",
+    "publish": "yarn build:schematics",
+    "test": "yarn build:clean:launch && yarn test:sandbox && yarn clean",
+    "test:ci": "yarn link:schematic && yarn test",
+    "test:schematic": "npm run build && jasmine src/**/*_spec.js",
+    "test:sandbox": "cd sandbox && yarn lint && yarn test && yarn e2e && yarn build",
+    "test:unit": "yarn build && jasmine src/**/*_spec.js",
+    "update:sandbox": "cd sandbox && ng update --all"
+  },
+  "keywords": [
+    "schematics"
+  ],
+  "files": [
+    "dist/"
+  ],
+  "license": "MIT",
+  "schematics": "./dist/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^7.0.6",
+    "@angular-devkit/schematics": "^7.0.6",
+    "@types/jasmine": "^2.6.0",
+    "@types/node": "^8.0.31",
+    "jasmine": "^2.8.0",
+    "typescript": "~3.1.6"
+  },
+  "devDependencies": {
+    "@nrwl/schematics": "^7.8.6",
+    "@nrwl/workspace": "^0.0.1",
+    "husky": "1.1.4",
+    "lint-staged": "8.0.5",
+    "prettier": "1.15.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,md,ts}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
